@@ -1,0 +1,139 @@
+@import '~antd/dist/antd.less';
+
+@primary-color:#F0A500;
+@primary-color-light:#F4CB55;
+@success-color:#52c41a;
+@link-color:#cda10a;
+@switch-color:#FFC637;
+@layout-header-background:#ffffff;
+@layout-sider-background:@layout-header-background;
+@disabled-color: rgba(0, 0, 0, 0.5);
+
+.main-menu {
+    background-color: @layout-header-background;
+    color:#F0A500;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;  
+}
+
+.main-menu .ant-menu-item-selected a {
+    color:@primary-color-light !important;
+}
+
+.ant-menu,.ant-menu-item {
+    font-size: 16px;
+    line-height: 24px;  
+    font-family: Poppins, sans-serif;
+}
+
+.main-menu .ant-menu-item a {
+    color: black;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;  
+}
+
+.ant-menu-item a:hover {
+    color: #F0A500;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;  
+}
+
+.main-menu .ant-menu-item-selected {
+    background-color: @layout-header-background !important;
+}
+
+.main-menu .ant-menu-sub.ant-menu-inline {
+    background-color: @layout-header-background;
+    color: black;
+}
+
+.site-layout-workspace {
+    background: #fff;
+  }
+  
+.ant-table-tbody tr.ant-table-row:hover td {
+    background:@primary-color-light !important;
+}
+
+.ant-collapse-extra:hover {
+    color:@primary-color;
+}
+  
+.ant-modal-confirm-content {
+    margin-left: 0px !important;
+}
+
+.ant-layout-sider-trigger {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    height: 48px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+    background: linear-gradient(180deg, #FDDC73 -23.64%, #FFBF25 100%);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ant-collapse-borderless > .ant-collapse-item {
+    border: none;
+    background: white;
+    border-radius: 10px;
+}
+
+.ant-table-thead th.ant-table-column-has-sorters.ant-table-cell-fix-right:hover {
+    background: white;
+}
+.ant-transfer-customize-list .ant-table-wrapper .ant-table-small > .ant-table-content > .ant-table-body > table > .ant-table-thead > tr > th {
+    background: white;
+}
+.ant-table-small .ant-table-thead > tr > th {
+    background-color: white;
+}
+
+.ant-table-thead > tr > th {
+    position: relative;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    text-align: left;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s ease;
+}
+
+.ant-table-thead th.ant-table-column-sort {
+    background: white;
+}
+
+td.ant-table-column-sort {
+    background: white;
+}
+
+.ant-table table {
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.ant-menu-inline.ant-menu-root .ant-menu-item > .ant-menu-title-content,
+.ant-menu-inline.ant-menu-root .ant-menu-submenu-title > .ant-menu-title-content {
+  flex: auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    top:10px;
+}

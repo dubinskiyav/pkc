@@ -1,0 +1,16 @@
+{
+  "short_name": "АИС Web MLM",
+  "name": "АИС Web MLM",
+  "icons": [
+
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "170x124"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

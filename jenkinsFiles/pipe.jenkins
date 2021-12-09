@@ -1,0 +1,58 @@
+#!groovy
+properties([disableConcurrentBuilds()])
+
+String chat_id = ""
+String access_token = "HXyc47C2GtjnsjUtue76HbWwTuVmm_KUhoBR_a7xBxI"
+String branchName = "master"
+String dirName = "gelicon.core"
+String dirOutput = "html"
+
+node {
+    try {
+        stage ("Подготовка") {
+            try {
+                def payloadJson = readJSON text: payload
+                branchName = payloadJson.ref.substring(11)
+                if (branchName != "master") {
+                    dirName = branchName
+                    dirOutput = branchName
+                }
+                String committer = payloadJson.pusher.username
+                def response = sh returnStdout: true, script: "curl https://botapi.tamtam.chat/chats/gelicon-$committer?access_token=$access_token"
+                def responseJson = readJSON text: response
+                chat_id = responseJson.chat_id
+            } catch(e) {
+                // Заглушим
+            }
+            if (chat_id != "") {
+                sh "curl -H \"Content-Type: application/json\" --data \"{\\\"text\\\":\\\"Задача '$env.JOB_BASE_NAME ($branchName)' запущена\\\"}\" \"https://botapi.tamtam.chat/messages?access_token=$access_token&chat_id=$chat_id\""
+            }
+        }
+        if (currentBuild.result == "SUCCESS") {
+            return
+        }
+        stage("Обновление каталога") {
+            dir ("/home/build/$dirName/frontend") {
+                sh "git fetch --all"
+                sh "git reset --hard origin/$branchName"
+            }
+        }
+        stage("Сборка") {
+            dir ("/home/build/$dirName/frontend") {
+                sh "CI='' npm run build"
+            }
+        }
+        stage("Деплой") {
+            sh "rm -r /var/www/$dirOutput"
+            sh "cp -r /home/build/$dirName/frontend/build /var/www/$dirOutput"
+            if (chat_id != "") {
+                sh "curl -H \"Content-Type: application/json\" --data \"{\\\"text\\\":\\\"Задача '$env.JOB_BASE_NAME ($branchName)' успешно выполнена\\\"}\" \"https://botapi.tamtam.chat/messages?access_token=$access_token&chat_id=$chat_id\""
+            }
+        }
+    } catch(e) {
+        if (chat_id != "") {
+            sh "curl -H \"Content-Type: application/json\" --data \"{\\\"text\\\":\\\"Задача '$env.JOB_BASE_NAME ($branchName)' завершена с ошибкой!\\nДополнительная информация доступна по ссылке ${BUILD_URL}console (логин: gituser, пароль: gituser)\\\"}\" \"https://botapi.tamtam.chat/messages?access_token=HXyc47C2GtjnsjUtue76HbWwTuVmm_KUhoBR_a7xBxI&chat_id=$chat_id\""
+        }
+        throw e
+    }
+}

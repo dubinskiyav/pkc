@@ -1,0 +1,95 @@
+.logo {
+  height: 110px;
+  color: white;
+  font-size: x-large;
+  margin-right: 30px;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #FDDC73 -23.64%, #FFBF25 100%);
+  width: 340px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 30%;
+  background: linear-gradient(180deg, #FDDC73 -23.64%, #FFBF25 100%);
+}
+
+.logo-long-img {
+  height: 49.45px;
+  width: 72.59px;
+  margin: 8px;
+  left: 38px;
+  top: 28px;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.table-row-disabled {
+  color: lightgray;
+}
+
+.table-row-disabled .anticon {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.forget-pass {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.status {
+  max-height: 16px;
+}
+
+.statusDiv {
+  width: 30px;
+  height: 30px;
+}
+
+.ant-form-item-label > label::after {
+  content: '' !important;
+}
+
+.ant-modal-title {
+  display: flex;
+  align-items: center;
+}
